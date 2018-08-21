@@ -34,20 +34,11 @@ int main( int argc, char **argv, char **envp )
 
 	printf("x=%x - y=%x -- ", xi, yi);
 
-/* This doesn't work!  Congratulations by Florian Scholz, please visit EPR */
-#if 1
-#warning "The behaviour of this code is undefined.\nSigned char goes from -127 to 127\n and not from -255 to 255"
-//Offset 43  und 184 statt 256
 	x = 43 + (xi+500)*184/1000;
 	y = 43 + (yi+500)*184/1000;
-#else
-	x = (xi+500)*127/1000;
-	y = (yi+500)*127/1000;
-#endif
 
 	printf("x=%x - y=%x\n", x, y);
 	
-	//Nullwerte filtern 
 	if( x == 0x00 || y == 0x00){
 		return -1; 
 	}
